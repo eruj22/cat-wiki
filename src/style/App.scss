@@ -1,0 +1,68 @@
+@import "./base/colors.scss";
+
+@media (min-width: 801px) {
+  .header {
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 1rem;
+
+    &__hamburger {
+      display: none;
+    }
+  }
+
+  .nav {
+    &__menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    &--close {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    &__hamburger {
+      font-size: 26px;
+    }
+  }
+
+  .nav {
+    position: fixed;
+    transform: translateX(-100%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    transition: all 0.4s ease-out;
+    background-color: $clr-bg2;
+
+    &__item {
+      margin: 2rem 0;
+    }
+
+    &--open {
+      transform: translateX(0);
+    }
+
+    &--close {
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 26px;
+    }
+  }
+}
