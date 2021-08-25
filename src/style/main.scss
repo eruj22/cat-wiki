@@ -16,6 +16,10 @@ a {
 //   border-bottom: 1px solid $clr-text-btn;
 // }
 
+h3 {
+  margin: 0;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -33,8 +37,16 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  font-size: 16px;
+}
+
+.link {
   color: $clr-bg-btn;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0;
 }
 
 .wrapper {
@@ -105,13 +117,19 @@ p {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
+
+      img {
+        border-radius: 1rem;
+        width: 100%;
+        height: 160px;
+      }
     }
 
     h2 {
       margin: 0;
     }
 
-    button {
+    .link {
       grid-column: 4 / 5;
       align-self: end;
       justify-self: end;
@@ -179,5 +197,63 @@ p {
     .flex {
       flex-direction: column;
     }
+  }
+}
+
+.allCats {
+  padding-bottom: 3rem;
+  &__item {
+    display: flex;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100%;
+      max-width: 300px;
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .allCats {
+    &__item {
+      flex-direction: column;
+
+      img {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.oneCat {
+  &__info {
+    padding: 1rem 2rem 2rem;
+    display: flex;
+    gap: 3rem;
+  }
+}
+
+.rating {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+
+  p,
+  div {
+    display: inline-block;
+    margin: 0;
+  }
+
+  &__item {
+    width: 60px;
+    height: 10px;
+    border-radius: 2rem;
+    background-color: rgb(189, 189, 189);
+  }
+
+  .active {
+    background-color: $clr-text-btn;
   }
 }

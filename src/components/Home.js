@@ -1,13 +1,25 @@
-import React from "react"
+import { useState, useEffect } from "react"
 import logo from "../assets/CatwikiLogo-light.svg"
 import { FiSearch } from "react-icons/fi"
 import { BsArrowRight } from "react-icons/bs"
 import Footer from "./Footer"
 import image1 from "../assets/image1.png"
-import image2 from "../assets/image2.png"
-import image3 from "../assets/image3.png"
+import { getRandomInt } from "../utils/helpers"
+import { Link } from "react-router-dom"
 
-function Home() {
+function Home({ appData }) {
+  const [randomData, setRandomData] = useState([])
+
+  // TODO: better that I choose random numbers
+  useEffect(() => {
+    setRandomData([])
+    for (let i = 0; i < 4; i++) {
+      const number = getRandomInt(67)
+      const getCat = appData[number]
+      setRandomData((blah) => [...blah, getCat])
+    }
+  }, [])
+
   return (
     <>
       <section className="hero wrapper">
@@ -30,15 +42,16 @@ function Home() {
             <p>Most searched Breeds</p>
             <div className="popular__text--grid">
               <h2>66+ Breeds For You To Discover</h2>
-              <button>
+              <Link to="/cats" className="link">
                 See more
                 <BsArrowRight />
-              </button>
-              {/* add images */}
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
-              <div>4</div>
+              </Link>
+              {randomData.map(({ name, image: { url } }) => (
+                <div>
+                  <img src={url} alt={name} />
+                  <p>{name}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -52,15 +65,13 @@ function Home() {
               calming chemicals in your body which lower your stress and anxiety
               levels
             </p>
-            <button>
+            <Link to="/cats" className="link">
               Read more
               <BsArrowRight />
-            </button>
+            </Link>
           </div>
           <aside className="main__images">
-            {/* <img src={image2} alt="" /> */}
             <img src={image1} alt="" />
-            {/* <img src={image3} alt="" /> */}
           </aside>
         </div>
       </main>
