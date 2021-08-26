@@ -1,0 +1,21 @@
+.footer {
+  background-color: black;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  color: $clr-bg;
+  padding: 1rem 0;
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer {
+    &__text {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

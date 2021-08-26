@@ -1,0 +1,26 @@
+body {
+  font-family: $font-family;
+  background-color: $clr-bg;
+}
+
+a {
+  color: $clr-text-btn;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}

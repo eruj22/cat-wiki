@@ -6,11 +6,16 @@ import Footer from "./Footer"
 import image1 from "../assets/image1.png"
 import { getRandomInt } from "../utils/helpers"
 import { Link } from "react-router-dom"
+import TextField from "@material-ui/core/TextField"
+import Autocomplete from "@material-ui/lab/Autocomplete"
+import { useHistory } from "react-router-dom"
 
 function Home({ appData }) {
   const [randomData, setRandomData] = useState([])
+  const [searchQuery, setSearchQuery] = useState("")
 
-  // TODO: better that I choose random numbers
+  const history = useHistory()
+
   useEffect(() => {
     setRandomData([])
     for (let i = 0; i < 4; i++) {
@@ -20,6 +25,19 @@ function Home({ appData }) {
     }
   }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const getName = appData.find((item) => item.name === searchQuery.trim())
+    const getId = getName.id
+    if (true) history.push(`/${getId}`)
+  }
+
+  const onChange = (e) => {
+    const input = e.target.value
+    setSearchQuery(input)
+  }
+
   return (
     <>
       <section className="hero wrapper">
@@ -27,12 +45,23 @@ function Home({ appData }) {
           <div className="hero__text">
             <img src={logo} alt="" />
             <p>Get to know more about your cat breed</p>
-            <div className="hero__text--input">
-              <input type="text" placeholder="Enter your breed" />
-              <button>
+            <form className="hero__text--form" onSubmit={handleSubmit}>
+              <Autocomplete
+                options={appData}
+                getOptionLabel={(option) => option.name}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Enter your breed"
+                    variant="outlined"
+                    onChange={onChange}
+                  />
+                )}
+              />
+              <button className="search">
                 <FiSearch />
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </section>
@@ -46,8 +75,8 @@ function Home({ appData }) {
                 See more
                 <BsArrowRight />
               </Link>
-              {randomData.map(({ name, image: { url } }) => (
-                <div>
+              {randomData.map(({ name, image: { url } }, index) => (
+                <div key={index}>
                   <img src={url} alt={name} />
                   <p>{name}</p>
                 </div>

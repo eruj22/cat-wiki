@@ -12,20 +12,32 @@ import SectionOneCat from "./components/SectionOneCat"
 function App() {
   const [showMenu, setShowMenu] = useState(false)
   const [appData, setAppData] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const apiKey = "ad1553f0-4bb7-4bb2-8dbd-ceb8064c38e8"
 
-  useEffect(() => {
+  const fetchData = () => {
     const apiUrl = `https://api.thecatapi.com/v1/breeds`
     const config = {
       method: "get",
       headers: { "x-api-key": apiKey },
     }
-    axios.get(apiUrl, config).then((repos) => {
-      const allRepos = repos.data
-      setAppData(allRepos)
-    })
-  }, [setAppData])
+    axios
+      .get(apiUrl, config)
+      .then((resp) => {
+        setAppData(resp.data)
+        setLoading(false)
+      })
+      .catch((err) => console.log(err))
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <div>Loading</div>
+  }
 
   return (
     <Router>
@@ -53,15 +65,6 @@ function App() {
                 All Cats
               </Link>
             </li>
-            <li className="nav__item">
-              <Link
-                className="nav__link"
-                onClick={() => setShowMenu(false)}
-                to="/cat"
-              >
-                Cat
-              </Link>
-            </li>
           </ul>
           <button className="nav--close" onClick={() => setShowMenu(false)}>
             <CgClose />
@@ -78,9 +81,7 @@ function App() {
         <Route path="/cats">
           <SectionAllCats appData={appData} />
         </Route>
-        <Route path="/cat">
-          <SectionOneCat />
-        </Route>
+        <Route path="/:id" component={SectionOneCat} />
       </Switch>
     </Router>
   )
