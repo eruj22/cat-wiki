@@ -2,12 +2,14 @@ import { useState, useEffect } from "react"
 import "./style/main.scss"
 import Home from "./components/Home"
 import SectionAllCats from "./components/SectionAllCats"
+import Article from "./components/Article"
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import logo from "./assets/CatwikiLogo.svg"
 import { GiHamburgerMenu } from "react-icons/gi"
 import { CgClose } from "react-icons/cg"
 import axios from "axios"
 import SectionOneCat from "./components/SectionOneCat"
+import Loader from "./utils/Loader"
 
 function App() {
   const [showMenu, setShowMenu] = useState(false)
@@ -33,10 +35,11 @@ function App() {
 
   useEffect(() => {
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (loading) {
-    return <div>Loading</div>
+    return <Loader />
   }
 
   return (
@@ -80,6 +83,9 @@ function App() {
         </Route>
         <Route path="/cats">
           <SectionAllCats appData={appData} />
+        </Route>
+        <Route path="/article">
+          <Article />
         </Route>
         <Route path="/:id" component={SectionOneCat} />
       </Switch>

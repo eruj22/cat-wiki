@@ -4,38 +4,40 @@ import { FiSearch } from "react-icons/fi"
 import { BsArrowRight } from "react-icons/bs"
 import Footer from "./Footer"
 import image1 from "../assets/image1.png"
-import { getRandomInt } from "../utils/helpers"
 import { Link } from "react-router-dom"
 import TextField from "@material-ui/core/TextField"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 import { useHistory } from "react-router-dom"
 
 function Home({ appData }) {
-  const [randomData, setRandomData] = useState([])
-  const [searchQuery, setSearchQuery] = useState("")
+  const [showCats, setShowCats] = useState([])
 
   const history = useHistory()
 
-  useEffect(() => {
-    setRandomData([])
+  const catImages = () => {
+    const catArray = [4, 44, 33, 25]
     for (let i = 0; i < 4; i++) {
-      const number = getRandomInt(67)
-      const getCat = appData[number]
-      setRandomData((blah) => [...blah, getCat])
+      const getCat = appData[catArray[i]]
+      setShowCats((blah) => [...blah, getCat])
     }
+  }
+
+  useEffect(() => {
+    catImages()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const getName = appData.find((item) => item.name === searchQuery.trim())
-    const getId = getName.id
-    if (true) history.push(`/${getId}`)
-  }
+    const getInput = e.target.firstChild.firstChild.lastChild.firstChild.value
 
-  const onChange = (e) => {
-    const input = e.target.value
-    setSearchQuery(input)
+    const getName = appData.find(
+      (item) => item.name.toLowerCase() === getInput.trim().toLowerCase()
+    )
+    const getId = getName.id
+
+    if (true) history.push(`/${getId}`)
   }
 
   return (
@@ -54,7 +56,6 @@ function Home({ appData }) {
                     {...params}
                     label="Enter your breed"
                     variant="outlined"
-                    onChange={onChange}
                   />
                 )}
               />
@@ -75,7 +76,7 @@ function Home({ appData }) {
                 See more
                 <BsArrowRight />
               </Link>
-              {randomData.map(({ name, image: { url } }, index) => (
+              {showCats.map(({ name, image: { url } }, index) => (
                 <div key={index}>
                   <img src={url} alt={name} />
                   <p>{name}</p>
@@ -94,7 +95,7 @@ function Home({ appData }) {
               calming chemicals in your body which lower your stress and anxiety
               levels
             </p>
-            <Link to="/cats" className="link">
+            <Link to="/article" className="link">
               Read more
               <BsArrowRight />
             </Link>

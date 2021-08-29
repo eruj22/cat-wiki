@@ -3,6 +3,7 @@ import Footer from "./Footer"
 import Rating from "@material-ui/lab/Rating"
 import { FaSquare } from "react-icons/fa"
 import axios from "axios"
+import Loader from "../utils/Loader"
 
 function SectionOneCat({ match }) {
   const [data, setData] = useState([])
@@ -27,10 +28,11 @@ function SectionOneCat({ match }) {
 
   useEffect(() => {
     fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading) {
-    return <div>Loading</div>
+    return <Loader />
   }
 
   const { url } = data
@@ -150,6 +152,12 @@ function SectionOneCat({ match }) {
                 size="large"
                 readOnly
               />
+            </div>
+            <div className="rating">
+              <small>Legend:</small>
+              <small>
+                one <FaSquare className="icon" /> means rating 1 out of 5
+              </small>
             </div>
           </div>
         </div>
