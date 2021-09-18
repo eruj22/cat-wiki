@@ -1,5 +1,7 @@
 # CatWiki
 
+![Posnetek zaslona 2021-08-30 083143](https://user-images.githubusercontent.com/80893722/131297725-2d195c7b-6c2a-44d7-b2db-15c542f58313.png)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
