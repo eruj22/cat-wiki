@@ -57,7 +57,7 @@ function SectionOneCat({ match }) {
     <>
       <section className="oneCat wrapper">
         <div className="oneCat__info">
-          <img src={url} alt="" />
+          <img className="oneCat__image" src={url} alt="" />
           <div className="info__text">
             <h3>{name}</h3>
             <p>{description}</p>
@@ -154,8 +154,8 @@ function SectionOneCat({ match }) {
               />
             </div>
             <div className="rating">
-              <small>Legend:</small>
-              <small>
+              <small className="rating__small">Legend:</small>
+              <small className="rating__small">
                 one <FaSquare className="icon" /> means rating 1 out of 5
               </small>
             </div>

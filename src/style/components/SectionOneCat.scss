@@ -1,15 +1,15 @@
 .oneCat {
+  &__image {
+    max-width: 400px;
+    width: 100%;
+    border-radius: 1rem;
+  }
+
   &__info {
     padding: 1rem 2rem 2rem;
     display: grid;
     grid-template-columns: 2fr 5fr;
     gap: 3rem;
-
-    img {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 1rem;
-    }
 
     .info__text p:nth-child(3) {
       margin-top: 3rem;
@@ -32,11 +32,12 @@
     margin: 0;
   }
 
-  small {
+  &__small {
     margin-top: 1rem;
-    .icon {
-      color: #ffb400;
-    }
+  }
+
+  .icon {
+    color: #ffb400;
   }
 }
 

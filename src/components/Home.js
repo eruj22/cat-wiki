@@ -45,9 +45,11 @@ function Home({ appData }) {
       <section className="hero wrapper">
         <div className="container">
           <div className="hero__text">
-            <img src={logo} alt="" />
-            <p>Get to know more about your cat breed</p>
-            <form className="hero__text--form" onSubmit={handleSubmit}>
+            <img className="hero__image" src={logo} alt="" />
+            <p className="hero__subtitle">
+              Get to know more about your cat breed
+            </p>
+            <form onSubmit={handleSubmit}>
               <Autocomplete
                 options={appData}
                 getOptionLabel={(option) => option.name}
@@ -70,15 +72,15 @@ function Home({ appData }) {
         <div className="container">
           <div className="popular__text">
             <p>Most searched Breeds</p>
-            <div className="popular__text--grid">
-              <h2>66+ Breeds For You To Discover</h2>
+            <div className="popular__grid">
+              <h2 className="popular__title">66+ Breeds For You To Discover</h2>
               <Link to="/cats" className="link">
                 See more
                 <BsArrowRight />
               </Link>
               {showCats.map(({ name, image: { url } }, index) => (
                 <div key={index}>
-                  <img src={url} alt={name} />
+                  <img className="popular__image" src={url} alt={name} />
                   <p>{name}</p>
                 </div>
               ))}

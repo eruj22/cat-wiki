@@ -32,6 +32,7 @@ function SectionAllCats({ appData }) {
           {appData.map(({ name, description, reference_image_id }, index) => (
             <div onClick={showCat} className="allCats__item" key={index}>
               <LazyLoadImage
+                className="allCats__image"
                 src={showImg(reference_image_id)}
                 alt={name}
                 width={300}
