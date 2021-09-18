@@ -77,7 +77,7 @@ git clone https://github.com/eruj22/cat-wiki
 npm install
 ```
 
-2. Run application in localhost
+3. Run application in localhost
 
 ```sh
 npm start
