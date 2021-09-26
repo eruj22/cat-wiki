@@ -16,7 +16,7 @@ function App() {
   const [appData, setAppData] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const apiKey = "ad1553f0-4bb7-4bb2-8dbd-ceb8064c38e8"
+  const apiKey = process.env.API_KEY
 
   const fetchData = () => {
     const apiUrl = `https://api.thecatapi.com/v1/breeds`

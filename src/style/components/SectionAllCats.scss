@@ -14,6 +14,11 @@
     margin-right: 2rem;
     border-radius: 1rem;
   }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 800px) {

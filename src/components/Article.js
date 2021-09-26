@@ -3,6 +3,7 @@ import Footer from "./Footer"
 import image2 from "../assets/image2.png"
 
 function Article() {
+  window.scrollTo({ top: 0 })
   return (
     <>
       <article className="article">
