@@ -15,6 +15,21 @@
       margin-top: 3rem;
     }
   }
+
+  &__text {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    align-items: center;
+    margin: 0.5rem 0;
+
+    span {
+      margin-left: 0.4rem;
+    }
+  }
+
+  &__name {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .rating {
@@ -34,6 +49,10 @@
 
   &__small {
     margin-top: 1rem;
+
+    &:nth-child(2) {
+      padding-left: 0.4rem;
+    }
   }
 
   .icon {

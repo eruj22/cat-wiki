@@ -59,19 +59,19 @@ function SectionOneCat({ match }) {
         <div className="oneCat__info">
           <img className="oneCat__image" src={url} alt="" />
           <div className="info__text">
-            <h3>{name}</h3>
+            <h3 className="oneCat__name">{name}</h3>
             <p>{description}</p>
-            <p>
+            <p className="oneCat__text">
               <b>Temperament: </b>
-              {temperament}
+              <span>{temperament}</span>
             </p>
-            <p>
+            <p className="oneCat__text">
               <b>Origin: </b>
-              {origin}
+              <span>{origin}</span>
             </p>
-            <p>
+            <p className="oneCat__text">
               <b>Life span: </b>
-              {life_span} years
+              <span>{life_span} years</span>
             </p>
             <div className="rating">
               <b>Adaptability: </b>

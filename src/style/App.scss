@@ -1,10 +1,9 @@
 @media (min-width: 801px) {
   .header {
-    height: 43px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 1rem;
+    align-items: center;
+    padding: 0.4rem 1rem;
 
     &__hamburger {
       display: none;

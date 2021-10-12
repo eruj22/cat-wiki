@@ -1,8 +1,21 @@
 .article {
   max-width: 600px;
   margin: 0 auto;
+
+  &__image {
+    margin: 1rem 0;
+  }
+
+  &__subtitle {
+    margin: 1.3rem 0 0.4rem;
+  }
+
+  &__comment {
+    margin-top: 2rem;
+  }
 }
 
 .italic {
   font-style: italic;
+  margin-bottom: 2rem;
 }

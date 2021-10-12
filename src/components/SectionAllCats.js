@@ -37,7 +37,7 @@ function SectionAllCats({ appData }) {
     <>
       <section className="allCats">
         <div className="wrapper">
-          <h2>Top 10 most searched breeds</h2>
+          <h2 className="allCats__title">Top 10 most searched breeds</h2>
           {appDataShort.map(
             ({ name, description, reference_image_id }, index) => (
               <div onClick={showCat} className="allCats__item" key={index}>
